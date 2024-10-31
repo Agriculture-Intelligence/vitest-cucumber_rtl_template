@@ -1,7 +1,7 @@
 # RTL + Vitest Cucumber
 
 This template provides a minimal setup to setup testing using RTL (React Testing Library) with Vitest Cucumber. Vitest Cucumber is a plugin
-uses Gherkin syntax to setup tests
+that uses Gherkin syntax to setup tests
 
 # Installation 
 Below installs react-testing library, vitest-cucumber, and vitest. 
