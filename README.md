@@ -1,50 +1,55 @@
-# React + TypeScript + Vite
+# RTL + Vitest Cucumber
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This template provides a minimal setup to setup testing using RTL (React Testing Library) with Vitest Cucumber. Vitest Cucumber is a plugin
+uses Gherkin syntax to setup tests
 
-Currently, two official plugins are available:
+# Installation 
+Below installs react-testing library, vitest-cucumber, and vitest. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+```
+npm i @testing-library/react
+```
+```
+npm install -D vitest
+```
+```
+npm i @amiceli/vitest-cucumber
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+# Example
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
+Below shows an example of the “feature.test.tsx” where the test simulates a user uploading files to a dropbox. Afterwards, the table UI component should be populated and be shown to the user.
+Also, note how the tests are written in Gherkin syntax (more information can be found here -> https://github.com/amiceli/vitest-cucumber).
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
 ```
+f.Scenario("User wants to upload KML file", (s) => {
+      s.Given("the uploadTab is live", async () => {
+          //logic to check if uploadTab is live
+      });
+      s.When("the user clicks on the UploadButton", async () => {
+       //user clicks upload button
+        expect(
+          screen.getByRole("button", { name: "Upload" }),
+        ).toBeInTheDocument();
+        await userEvent.click(screen.getByRole("button", { name: "Upload" }));
+      });
+      s.Then("the user should see a green check mark and table", () => {
+          //check green check mark
+          expect(screen.queryByText(“check mark”)).toBeInScreen();
+         //logic to check table
+      });
+
+  });
+```
+# Running tests 
+To run the tests in the repo follow the following steps: 
+1) Clone Repo
+2) Download node modules using ``npm i``
+3) Run test using ``npm test src/__tests__/button.test.tsx``
+
+# External Links
+React Testing Library: https://github.com/testing-library/react-testing-library
+
+Vitest Cucumber: https://www.npmjs.com/package/@amiceli/vitest-cucumber
+
+Vitest: https://vitest.dev/guide/
