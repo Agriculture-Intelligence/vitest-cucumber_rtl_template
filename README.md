@@ -51,7 +51,7 @@ To run the tests in the repo follow the following steps:
 
 1. Clone Repo
 2. Download node modules using `npm i`
-3. Run test using `npm test /__tests__/button.test.tsx`
+3. Run test using `npm test src/__tests__/button.test.tsx`
 
 # External Links
 
