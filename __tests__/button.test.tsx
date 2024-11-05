@@ -3,7 +3,7 @@ import { screen, waitFor, render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { expect } from "vitest";
 import { Button } from "../Button";
-const feature = await loadFeature("src/__tests__/button.feature");
+const feature = await loadFeature("__tests__/button.feature");
 
 describeFeature(feature, (f) => {
   //below is specfic scenario or user action
