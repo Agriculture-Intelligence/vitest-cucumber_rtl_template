@@ -19,6 +19,18 @@ npm install -D vitest
 npm i @amiceli/vitest-cucumber
 ```
 
+# Generate Spec File from Feature File
+Syntax: 
+
+```
+npx @amiceli/vitest-cucumber <path-to-feature> <path-to-spec>
+```
+
+Example: 
+```
+npx @amiceli/vitest-cucumber features/example.feature src/__tests__/example.spec.ts
+```
+
 # Example
 
 Below shows an example of the “feature.test.tsx” where the test simulates a user uploading files to a dropbox. Afterwards, the table UI component should be populated and be shown to the user.
